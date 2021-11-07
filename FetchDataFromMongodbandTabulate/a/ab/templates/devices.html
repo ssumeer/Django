@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Device data </title>
+	</head>
+
+	<body>
+		I found {{ total }} values in Database.
+		Here are those for you 
+		<table border=1>
+			<tr><th>Sl.No</th><th>Object ID</th><th>Device data</th></tr>
+		{% for dev in devdata  %}
+		{% with t=dev.device %}
+		<tr><td align='center'> {{ dev.slno }}</td>
+			<td>{{ dev.id }}</td>
+			<td>{{ t.data }}</td></tr>
+		{% endwith %}
+		{% endfor %}
+		</table>
+		{% if devdata.has_other_pages %}
+		    <ul class="pagination">
+		        {% if devdata.has_previous %}
+				    <li><a href="?page={{ devdata.previous_page_number }}">&laquo;</a></li>
+			    {% else %}
+				    <li class="disabled"><span>&laquo;</span></li>
+			    {% endif %}
+                {% for i in devdata.paginator.page_range %}
+				    {% if devdata.number == i %}
+					    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+				    {% else %}
+					    <li><a href="?page={{ i }}">{{ i }}</a></li>
+			        {% endif %}
+			    {% endfor %}
+			    {% if devdata.has_next %}
+				    <li><a href="?page={{ devdata.next_page_number }}">&raquo;</a></li>
+			    {% else %}
+				    <li class="disabled"><span>&raquo;</span></li>
+			    {% endif %}
+		       </ul>
+        {% endif %}
+        </body>
+</html>
