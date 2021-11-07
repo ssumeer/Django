@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.css' %}" />
+    </head>
+<body>
+    <div class="col-md-12"></div>
+    <div class="col-md-12 well" style="background-color: white">
+    {% load static %}
+        <h3 class="text-primary">  REEMUSS</h3>
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>
