@@ -2,17 +2,12 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Member
 # Create your views here.
 
-def index(request):
-    if request.method == 'POST':
-        member = Member(username=request.POST['username'], password=request.POST['password'],  firstname=request.POST['firstname'], lastname=request.POST['lastname'])
-        member.save()
-        return redirect('/')
-    else:
-        return render(request, 'web/index.html')
 
-def login(request):
-    return render(request, 'web/login.html')
 
+def sitemap(request):
+    return render(request, 'web/sitemap.html')
+
+<<<<<<< HEAD:RegistrationAndLoginSourceCode/web/views.py
 def home(request):
     if request.method == 'POST':
         if Member.objects.filter(username=request.POST['username'], password=request.POST['password']).exists():
@@ -21,4 +16,7 @@ def home(request):
         else:
             context = {'msg': 'Invalid username or password'}
             return render(request, 'web/login.html', context)
+=======
+
+>>>>>>> 83d1d6f (IRS sitemap task):web/views.py
 
